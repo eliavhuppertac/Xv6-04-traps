@@ -1,0 +1,30 @@
+
+1.
+according to the riscv unprivileged manual, figure 25.1 shows that the argumnet registers are a0-a7 & fa0-fa7
+13 is saved in a2
+
+2.
+there is no call to f & g, the complier optemizes them out
+
+3.
+000000000000064a <printf>
+
+4.
+the next intstruction, so 0x38
+
+5.
+It prints:
+He110 World
+
+i should be:
+0x726c6400
+
+we don't need to change 57616, because the %x operator just prints the number in hex
+and it still stays the same while being printed no matter the endian
+
+6.
+it will be a random number (garbage value)
+more specifically, the previous value that was set it the a2 register.
+
+This is because the function doesn't know that we never set the a2 register, so it will just assume we have, and therefore print the value there, which can be anything!
+
